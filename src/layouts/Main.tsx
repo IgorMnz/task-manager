@@ -6,9 +6,7 @@ const Main: FC = () => {
     return (
         <>
             <Header/>
-            <main>
-                <MainPage/>
-            </main>
+            <MainPage/>
         </>
     );
 };

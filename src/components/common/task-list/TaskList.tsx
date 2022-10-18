@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
+import styles from "./taskList.module.scss"
 
 const TaskList: FC = () => {
     return (
-        <div>
+        <div className={styles.wrapper}>
 
         </div>
     );
