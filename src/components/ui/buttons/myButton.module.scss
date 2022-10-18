@@ -1,0 +1,41 @@
+@import "../../../styles/variables/colors";
+
+.primary {
+  height: 32px;
+  padding: 9px 43px;
+  background: $accent-secondary;
+  border: none;
+  color: $accent-text-light;
+  cursor: pointer;
+}
+
+.secondary {
+  height: 32px;
+  padding: 9px 43px;
+  background: $gray;
+  border: none;
+  color: $accent-text-light;
+  cursor: pointer;
+}
+
+.primary:hover {
+  background: $accent-main;
+  box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
+}
+
+.primary:active {
+  color: $white;
+  background: $accent-text-light;
+  box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
+}
+
+.secondary:hover {
+  background: $dark-gray;
+  box-shadow: 0 0 5px 0.3rem rgba(196, 196, 196, 0.25);
+}
+
+.secondary:active {
+  color: $white;
+  background: darkgray;
+  box-shadow: 0 0 5px 0.3rem rgba(196, 196, 196, 0.25);
+}

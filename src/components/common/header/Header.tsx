@@ -6,9 +6,9 @@ const Header: FC = () => {
     return (
         <header className={styles.header}>
             <div className={styles.navbar}>
-                <div className={styles.title}>
+                <h1 className={styles.title}>
                     Список задач
-                </div>
+                </h1>
                 <ExitSvg/>
             </div>
         </header>
