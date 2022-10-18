@@ -1,8 +1,28 @@
 @import "../../../styles/variables/colors";
 
 .primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
   height: 32px;
-  padding: 9px 43px;
+  width: 150px;
+  background: $accent-secondary;
+  border: none;
+  color: $accent-text-light;
+  cursor: pointer;
+}
+
+.menu_primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
   background: $accent-secondary;
   border: none;
   color: $accent-text-light;
@@ -10,31 +30,53 @@
 }
 
 .secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
   height: 32px;
-  padding: 9px 43px;
+  width: 150px;
   background: $gray;
   border: none;
   color: $accent-text-light;
   cursor: pointer;
 }
 
-.primary:hover {
+.menu_secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background: $gray;
+  border: none;
+  color: $accent-text-light;
+  cursor: pointer;
+}
+
+.primary:hover, .menu_primary:hover {
+  transition: .2s;
   background: $accent-main;
   box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
 }
 
-.primary:active {
+.primary:active, .menu_primary:active {
   color: $white;
   background: $accent-text-light;
   box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
 }
 
-.secondary:hover {
+.secondary:hover, .menu_secondary:hover {
+  transition: .2s;
   background: $dark-gray;
   box-shadow: 0 0 5px 0.3rem rgba(196, 196, 196, 0.25);
 }
 
-.secondary:active {
+.secondary:active, .menu_secondary:active {
   color: $white;
   background: darkgray;
   box-shadow: 0 0 5px 0.3rem rgba(196, 196, 196, 0.25);

@@ -7,6 +7,38 @@ body {
   background-color: $gray;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+/* Text Input placeholder */
+
+::placeholder {
   color: $accent-text-dark;
+}
+
+/* Search input cancel button */
+
+::-webkit-search-cancel-button {
+  position: relative;
+  right: 2px;
+  background: url('../assets/icons/cross.svg') no-repeat 50% 50%;
+  background-size: contain;
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+/* Scroll bar styles */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-thumb {
+  background: $accent-main;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $accent-text-dark;
 }

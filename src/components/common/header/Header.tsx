@@ -9,7 +9,7 @@ const Header: FC = () => {
                 <h1 className={styles.title}>
                     Список задач
                 </h1>
-                <ExitSvg/>
+                <ExitSvg className={styles.icon}/>
             </div>
         </header>
     );

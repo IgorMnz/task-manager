@@ -1,0 +1,65 @@
+@import "../../../styles/variables/colors";
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 470px;
+  height: 32px;
+  margin: 16px 24px 0px 24px;
+
+  .checkbox {
+    width: 36px;
+    background: $accent-main;
+    cursor: pointer;
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 13px;
+    width: 123px;
+    background: $accent-main;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $white;
+    cursor: pointer;
+  }
+
+  .description {
+    display: flex;
+    align-items: center;
+    width: 155px;
+    padding-left: 25px;
+    background: $accent-main;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $white;
+    cursor: pointer;
+  }
+
+  .time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 7px;
+    width: 44px;
+    background: $accent-main;
+    cursor: pointer;
+  }
+
+  .visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    background: $accent-main;
+    cursor: pointer;
+  }
+}

@@ -20,6 +20,10 @@
 
     .input {
       font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
       margin: 8px 0;
       padding-left: 12px;
       height: 32px;
@@ -28,11 +32,14 @@
       background: $accent-secondary;
       border: 1px solid #83BCC3;
 
-
     }
 
     .input_textarea {
       font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
       margin: 8px 0;
       padding-top: 11px;
       padding-left: 12px;
@@ -44,75 +51,62 @@
       resize: none;
     }
 
-    .custom-checkbox {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
-    }
-
-    .custom-checkbox + label {
+    .checkbox-label {
       display: flex;
       align-items: center;
-      margin: 8px 0 22px 0;
-      user-select: none;
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 14px;
-      color: $accent-text-dark;
+      margin-top: 8px;
+      margin-bottom: 22px;
       cursor: pointer;
+      position: relative;
+
+      .checkbox {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .custom-checkbox {
+        width: 14px;
+        height: 14px;
+        border: 2px solid $accent-main;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .custom-checkbox:hover {
+        transition: .2s;
+        box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
+      }
+
+      .custom-checkbox::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 14px;
+        height: 16px;
+        background-image: url('../../../assets/icons/check-mark.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 12px;
+        opacity: 0;
+        transition: .2s;
+      }
+
+      .checkbox:checked + .custom-checkbox::before {
+        opacity: 1;
+      }
+
+      .checkbox-text {
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        padding-left: 7.5px;
+        color: $accent-text-light;
+      }
+
     }
 
-    .custom-checkbox + label::before {
-      content: '';
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      flex-grow: 0;
-      border: 2px solid $accent-main;
-      border-radius: 3px;
-      margin-right: 7.5px;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 50% 50%;
-    }
-
-    .custom-checkbox:checked + label::before {
-      border-color: $accent-main;
-      background-color: $light-gray;
-      background-image: url('../../../assets/icons/checkbox.svg');
-      background-size: 15px;
-    }
-
-    /* стили при наведении курсора на checkbox */
-    .custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
-      border-color: $accent-main;
-      box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
-    }
-
-    /* стили для активного состояния чекбокса (при нажатии на него) */
-    .custom-checkbox:not(:disabled):active + label::before {
-      border-color: $accent-main;
-    }
-
-    /* стили для чекбокса, находящегося в фокусе */
-    .custom-checkbox:focus + label::before {
-      box-shadow: none;
-    }
-
-    /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
-    .custom-checkbox:focus:not(:checked) + label::before {
-      border-color: $accent-main;
-    }
-
-    /* стили для чекбокса, находящегося в состоянии disabled */
-    .custom-checkbox:disabled + label::before {
-      background-color: $light-gray;
-    }
 
     .actions {
       display: flex;
@@ -122,5 +116,10 @@
 }
 
 .input:hover, .input_textarea:hover {
+  transition: .2s;
   box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
 }
+
+
+
+
