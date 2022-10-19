@@ -9,20 +9,16 @@ const TaskList: FC = () => {
     const [scroll, setScroll] = useState<boolean>(false)
 
     const scrollCheck = () => {
-        const block: any = document.getElementById('block')
-        const isScroll = block.scrollHeight > block.clientHeight
-        if (isScroll) {
-            setScroll(true)
-        } else {
-            setScroll(false)
+        const block: HTMLElement | null = document.getElementById('block')
+        if (block !== null) {
+            const isScroll: boolean = block.scrollHeight > block.clientHeight
+            isScroll ? setScroll(true) : setScroll(false)
         }
     }
 
     useEffect(() => {
         scrollCheck()
-        console.log(scroll)
     }, [scroll])
-
 
     return (
         <div className={styles.wrapper}>
