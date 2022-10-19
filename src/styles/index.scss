@@ -1,7 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import "variables/colors.scss";
 
 body {
   margin: 0;
   padding: 0;
   background-color: $gray;
+}
+
+/* Text Input placeholder */
+
+::placeholder {
+  color: $accent-text-dark;
+}
+
+/* Search input cancel button */
+
+::-webkit-search-cancel-button {
+  position: relative;
+  right: 2px;
+  background: url('../assets/icons/cross.svg') no-repeat 50% 50%;
+  background-size: contain;
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+/* Scroll bar styles */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-thumb {
+  background: $accent-main;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $accent-text-dark;
 }

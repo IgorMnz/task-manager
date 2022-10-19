@@ -1,12 +1,10 @@
 import React, {FC} from 'react';
-import MainPage from "./components/pages/main-page/MainPage";
+import Main from "./layouts/Main";
 
 
 const App: FC = () => {
     return (
-        <div className="wrapper">
-            <MainPage/>
-        </div>
+        <Main/>
     );
 };
 
