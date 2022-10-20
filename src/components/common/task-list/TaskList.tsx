@@ -1,12 +1,21 @@
 import React, {FC, useEffect, useState} from 'react';
 import styles from "./taskList.module.scss"
 import MenuBar from "../menu-bar/MenuBar";
-import {ReactComponent as VisibleSvg} from '../../../assets/icons/visible.svg'
 import FilterBar from "../filter-bar/FilterBar";
+import {ITasks} from "../../../types/ITasks";
+import TaskListItem from "../task-list-item/TaskListItem";
 
 const TaskList: FC = () => {
 
     const [scroll, setScroll] = useState<boolean>(false)
+    const [data, setData] = useState<ITasks[]>([
+        {id: 1, title: 'Элемент #1', description: 'Описание элемента #1', time: 1.25, visible: true, ended: false},
+        {id: 2, title: 'Элемент #2', description: 'Описание элемента #2', time: 1.25, visible: true, ended: true},
+        {id: 3, title: 'Элемент #3', description: 'Описание элемента #3', time: 1.25, visible: false, ended: true},
+        {id: 4, title: 'Элемент #4', description: 'Описание элемента #4', time: 1.25, visible: false, ended: true},
+        {id: 5, title: 'Элемент #5', description: 'Описание элемента #5', time: 1.25, visible: true, ended: true},
+
+    ])
 
     const scrollCheck = () => {
         const block: HTMLElement | null = document.getElementById('block')
@@ -26,257 +35,7 @@ const TaskList: FC = () => {
             <FilterBar/>
             {scroll && <div className={styles['shadow-box']}></div>}
             <ul id='block' className={styles['task-list']}>
-                <li>
-                    <label htmlFor="1" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="1"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="2" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="2"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="3" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="3"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="4" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="4"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="5" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="5"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="6" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="6"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="7" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="7"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="8" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="8"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label htmlFor="9" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="9"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
-
-                <li>
-                    <label htmlFor="10" className={styles.item}>
-                        <div className={styles.check}>
-                            <input
-                                type="checkbox"
-                                className={styles.checkbox}
-                                id="10"
-                                name="item"
-                            />
-                            <span className={styles['custom-checkbox']}></span>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </label>
-                </li>
+                <TaskListItem data={data}/>
             </ul>
         </div>
     );
