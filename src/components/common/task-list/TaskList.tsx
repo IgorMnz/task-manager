@@ -1,12 +1,21 @@
 import React, {FC, useEffect, useState} from 'react';
 import styles from "./taskList.module.scss"
 import MenuBar from "../menu-bar/MenuBar";
-import {ReactComponent as VisibleSvg} from '../../../assets/icons/visible.svg'
 import FilterBar from "../filter-bar/FilterBar";
+import {ITasks} from "../../../types/ITasks";
+import TaskListItem from "../task-list-item/TaskListItem";
 
 const TaskList: FC = () => {
 
     const [scroll, setScroll] = useState<boolean>(false)
+    const [data, setData] = useState<ITasks[]>([
+        {id: 1, title: 'Элемент #1', description: 'Описание элемента #1', time: 1.25, visible: true, ended: false},
+        {id: 2, title: 'Элемент #2', description: 'Описание элемента #2', time: 1.25, visible: true, ended: true},
+        {id: 3, title: 'Элемент #3', description: 'Описание элемента #3', time: 1.25, visible: false, ended: true},
+        {id: 4, title: 'Элемент #4', description: 'Описание элемента #4', time: 1.25, visible: false, ended: true},
+        {id: 5, title: 'Элемент #5', description: 'Описание элемента #5', time: 1.25, visible: true, ended: true},
+
+    ])
 
     const scrollCheck = () => {
         const block: HTMLElement | null = document.getElementById('block')
@@ -26,33 +35,7 @@ const TaskList: FC = () => {
             <FilterBar/>
             {scroll && <div className={styles['shadow-box']}></div>}
             <ul id='block' className={styles['task-list']}>
-                <li>
-                    <div className={styles.item}>
-                        <div className={styles.check}>
-                            <label htmlFor="1">
-                                <input
-                                    type="checkbox"
-                                    className={styles.checkbox}
-                                    id="1"
-                                    name="item"
-                                />
-                                <span className={styles['custom-checkbox']}></span>
-                            </label>
-                        </div>
-                        <div className={styles.title}>
-                            Элемент #1
-                        </div>
-                        <div className={styles.description}>
-                            Описание элемента #1
-                        </div>
-                        <div className={styles.time}>
-                            1.25
-                        </div>
-                        <div className={styles.visible}>
-                            <VisibleSvg/>
-                        </div>
-                    </div>
-                </li>
+                <TaskListItem data={data}/>
             </ul>
         </div>
     );
