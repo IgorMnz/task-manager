@@ -135,4 +135,14 @@ li:first-child {
   margin-top: 4px;
 }
 
+.item:hover {
+  transition: .2s;
+  box-shadow: 0 0 5px 0.3rem rgba(196, 196, 196, 0.25);
+}
+
+.item:active {
+  transition: .2s;
+  box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
+}
+
 
