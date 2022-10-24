@@ -4,5 +4,4 @@ export interface ITasks {
     description: string
     time: number
     visible: boolean
-    ended: boolean
 }

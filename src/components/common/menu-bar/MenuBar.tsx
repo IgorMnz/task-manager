@@ -16,12 +16,11 @@ const MenuBar: FC = () => {
         title: "Заголовок",
         description: "Описание",
         time: 1,
-        visible: true,
-        ended: false
+        visible: true
     }
 
     const handleAdding = () => {
-        addTask('Заголовок', 'Описание', 1, true, false)
+        addTask('Заголовок', 'Описание', 1, true)
     }
 
     return (

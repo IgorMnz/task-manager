@@ -13,7 +13,7 @@ const TaskListItem: FC<TaskListItemProps> = ({task}) => {
         <>
             <li>
                 <div
-                    className={task.visible && !task.ended ? styles['item-green'] : task.ended && task.visible ? styles['item-dark'] : styles['item-light']}>
+                    className={task.visible ? styles['item-dark'] : styles['item-light']}>
                     <div className={styles.check}>
                         <label htmlFor={task.title}>
                             <input
