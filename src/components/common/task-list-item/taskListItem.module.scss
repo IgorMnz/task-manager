@@ -128,14 +128,14 @@
   width: 32.5px;
 }
 
-.item:hover {
+.item-green:hover, .item-dark:hover, .item-light:hover {
   transition: .2s;
-  box-shadow: 0 0 5px 0.3rem rgba(196, 196, 196, 0.25);
+  box-shadow: 0 0 8px 0.2rem rgba(0, 0, 0, 0.2);
 }
 
-.item:active {
+.item-green:active, .item-dark:active, .item-light:active {
   transition: .2s;
-  box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
+  box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.1);
 }
 
 
