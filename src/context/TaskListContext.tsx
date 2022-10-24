@@ -5,7 +5,9 @@ import {v4 as uuidv4} from 'uuid';
 
 interface IContextProps {
     tasks: ITasks[];
-    addTask: (title: string, description: string, time: number, visible: boolean, checked: boolean) => any
+    addTask: (title: string, description: string, time: number, visible: boolean, checked: boolean) => any;
+    handleCheckbox: (e: any, id: string) => any;
+    deleteCheckedTasks: () => any;
 }
 
 interface Props {
@@ -28,8 +30,37 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setTasks([...tasks, {id: uuidv4(), title, description, time, visible, checked}])
     }
 
+    const handleCheckbox = (e: any, id: string) => {
+        let value: boolean = e.target.checked;
+        setTasks(
+            tasks.map(task => {
+                if (task.id === id) {
+                    task.checked = value;
+                }
+                return task;
+            }))
+    }
+
+    const deleteCheckedTasks = () => {
+        let arrayIds: any[] = [];
+        tasks.forEach(task => {
+            if (task.checked) {
+                arrayIds.push(task.id);
+            }
+        });
+
+        arrayIds.forEach((item: string) => {
+            setTasks(tasks.filter(task => task.id !== item))
+        })
+    }
+
     return (
-        <TaskListContext.Provider value={{tasks, addTask}}>
+        <TaskListContext.Provider value={{
+            tasks,
+            addTask,
+            handleCheckbox,
+            deleteCheckedTasks,
+        }}>
             {children}
         </TaskListContext.Provider>
     )

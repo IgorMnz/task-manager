@@ -10,7 +10,7 @@ import {TaskListContext} from "../../../context/TaskListContext";
 
 const MenuBar: FC = () => {
 
-    const {addTask} = useContext(TaskListContext)
+    const {addTask, deleteCheckedTasks} = useContext(TaskListContext)
 
     const defaultValues = {
         title: "Заголовок",
@@ -28,7 +28,7 @@ const MenuBar: FC = () => {
             <MyButton variant='menu_primary' onClick={handleAdding}>
                 <PlusSvg/>
             </MyButton>
-            <MyButton variant='menu_secondary'>
+            <MyButton variant='menu_secondary' onClick={deleteCheckedTasks}>
                 <DelSvg/>
             </MyButton>
             <SearchBar/>
