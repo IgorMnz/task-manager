@@ -11,7 +11,8 @@ interface TaskListItemProps {
 
 const TaskListItem: FC<TaskListItemProps> = ({task}) => {
 
-    const {handleCheckbox} = useContext(TaskListContext)
+    const {handleCheck} = useContext(TaskListContext)
+
 
     return (
         <>
@@ -26,7 +27,7 @@ const TaskListItem: FC<TaskListItemProps> = ({task}) => {
                                 id={task.id}
                                 name={task.title}
                                 value={task.id}
-                                onChange={(e) => handleCheckbox(e, task.id)}
+                                onChange={() => handleCheck(task.id)}
                                 checked={task.checked}
                             />
                             <span className={styles['custom-checkbox']}></span>
