@@ -20,7 +20,7 @@ const MenuBar: FC = () => {
     }
 
     const handleAdding = () => {
-        addTask('Заголовок', 'Описание', 1, true)
+        addTask('Заголовок', 'Описание', 1, true, false)
     }
 
     return (
