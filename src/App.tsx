@@ -1,10 +1,13 @@
 import React, {FC} from 'react';
 import Main from "./layouts/Main";
+import TaskListContextProvider from "./context/TaskListContext";
 
 
 const App: FC = () => {
     return (
-        <Main/>
+        <TaskListContextProvider>
+            <Main/>
+        </TaskListContextProvider>
     );
 };
 
