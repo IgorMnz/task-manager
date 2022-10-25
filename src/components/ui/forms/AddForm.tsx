@@ -123,7 +123,7 @@ const AddForm: FC = () => {
                     name='title'
                     type='text'
                     placeholder='Название'
-                    className={styles.input}
+                    className={(blur.title && errors.title) ? styles['input-error'] : styles.input}
                     value={formData.title}
                     onChange={e => handleChangeTitle(e)}
                     onBlur={(e) => handleBlur(e)}
@@ -133,7 +133,7 @@ const AddForm: FC = () => {
                     required
                     name='description'
                     placeholder='Описание'
-                    className={styles.input_textarea}
+                    className={(blur.description && errors.description) ? styles['input-textarea-error'] : styles['input-textarea']}
                     value={formData.description}
                     onChange={e => handleChangeDescription(e)}
                     onBlur={(e) => handleBlur(e)}
@@ -144,7 +144,7 @@ const AddForm: FC = () => {
                     name='time'
                     type='text'
                     placeholder='Время на выполнение задачи, ч.'
-                    className={styles.input}
+                    className={(blur.time && errors.time) ? styles['input-error'] : styles.input}
                     value={formData.time}
                     onChange={e => handleChangeTime(e)}
                     onBlur={(e) => handleBlur(e)}

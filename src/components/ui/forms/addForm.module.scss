@@ -31,10 +31,24 @@
       color: $accent-text-dark;
       background: $accent-secondary;
       border: 1px solid #83BCC3;
-
     }
 
-    .input_textarea {
+    .input-error {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      margin: 8px 0;
+      padding-left: 12px;
+      height: 32px;
+      width: 95%;
+      color: $accent-text-dark;
+      background: $accent-secondary;
+      border: 1px solid red;
+    }
+
+    .input-textarea {
       font-family: 'Roboto', sans-serif;
       font-style: normal;
       font-weight: 400;
@@ -48,6 +62,23 @@
       color: $accent-text-dark;
       background: $accent-secondary;
       border: 1px solid #83BCC3;
+      resize: none;
+    }
+
+    .input-textarea-error {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      margin: 8px 0;
+      padding-top: 11px;
+      padding-left: 12px;
+      height: 122px;
+      width: 95%;
+      color: $accent-text-dark;
+      background: $accent-secondary;
+      border: 1px solid red;
       resize: none;
     }
 
