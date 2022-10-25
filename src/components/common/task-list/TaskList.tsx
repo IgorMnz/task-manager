@@ -22,7 +22,6 @@ const TaskList: FC = () => {
 
     useEffect(() => {
         scrollCheck()
-        console.log(scroll)
     }, [scroll, tasks])
 
     return (

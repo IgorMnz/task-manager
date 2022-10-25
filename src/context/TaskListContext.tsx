@@ -8,6 +8,7 @@ interface IContextProps {
     addTask: (title: string, description: string, time: number, visible: boolean, checked: boolean) => any;
     handleCheck: (id: string) => any;
     handleRemove: () => any;
+    checked: boolean
 }
 
 interface Props {
@@ -23,8 +24,9 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         {id: "3", title: 'Элемент #3', description: 'Описание элемента #3', time: 1.25, visible: false, checked: false},
         {id: "4", title: 'Элемент #4', description: 'Описание элемента #4', time: 1.25, visible: false, checked: false},
         {id: "5", title: 'Элемент #5', description: 'Описание элемента #5', time: 1.25, visible: true, checked: false},
-
     ])
+
+    const [checked, setChecked] = useState(false);
 
     const addTask = (title: string, description: string, time: number, visible: boolean, checked: boolean) => {
         setTasks([...tasks, {id: uuidv4(), title, description, time, visible, checked}])
@@ -36,51 +38,38 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             if (id === task.id) {
                 task.checked = !task.checked;
             }
-
             return task;
         });
-
         setTasks(modifiedTasks);
+        let arr: any = []
+        modifiedTasks.forEach(item => {
+            if (item.checked) {
+                arr.push(item)
+            }
+        })
+        if (arr.length > 0) {
+            setChecked(true)
+        } else {
+            setChecked(false)
+        }
     };
 
     const handleRemove = () => {
         const copyTasks = [...tasks];
         const modifiedTasks = copyTasks.filter(
-            (task) => task.checked !== true
+            (task) => !task.checked
         );
+        setChecked(false);
         setTasks(modifiedTasks);
     };
-
-    // const handleCheckbox = (e: any, id: string) => {
-    //     let value: boolean = e.target.checked;
-    //     setTasks(
-    //         tasks.map(task => {
-    //             if (task.id === id) {
-    //                 task.checked = value;
-    //             }
-    //             return task;
-    //         }))
-    // }
-    //
-    // const deleteCheckedTasks = () => {
-    //     let arrayIds: any[] = [];
-    //     tasks.forEach(task => {
-    //         if (task.checked) {
-    //             arrayIds.push(task.id);
-    //         }
-    //     });
-    //
-    //     arrayIds.forEach((item: string) => {
-    //         setTasks(tasks.filter(task => task.id !== item))
-    //     })
-    // }
 
     return (
         <TaskListContext.Provider value={{
             tasks,
             addTask,
             handleCheck,
-            handleRemove
+            handleRemove,
+            checked
         }}>
             {children}
         </TaskListContext.Provider>
