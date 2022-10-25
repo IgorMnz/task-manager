@@ -5,7 +5,8 @@ import {TaskListContext} from "../../../context/TaskListContext";
 
 const AddForm: FC = () => {
 
-    const {editItem, editTask} = useContext(TaskListContext)
+    const {editItem, editTask
+    } = useContext(TaskListContext)
 
     const [formData, setFormData] = useState({
         title: '',
@@ -14,13 +15,6 @@ const AddForm: FC = () => {
         visible: false,
         checked: false
     })
-
-    const handleChange = (e: any) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
-        })
-    }
 
     useEffect(() => {
         if (editItem !== undefined && editItem !== null) {
@@ -33,6 +27,13 @@ const AddForm: FC = () => {
             })
         }
     }, [editItem])
+
+    const handleChange = (e: any) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
+        })
+    }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
