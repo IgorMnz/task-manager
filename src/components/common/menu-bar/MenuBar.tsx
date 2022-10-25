@@ -15,7 +15,7 @@ const MenuBar: FC = () => {
     const {addTask, handleRemove, checked} = useContext(TaskListContext)
 
     const handleAdding = () => {
-        addTask('Заголовок', 'Описание', 1, true, false)
+        addTask('Новая задача', 'Описание задачи', "0", true, false)
     }
 
     return (

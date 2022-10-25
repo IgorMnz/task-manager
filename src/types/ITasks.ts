@@ -2,7 +2,7 @@ export interface ITasks {
     id: string
     title: string
     description: string
-    time: number
+    time: string
     visible: boolean
     checked: boolean
 }

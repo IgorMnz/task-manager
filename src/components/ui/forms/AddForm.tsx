@@ -5,13 +5,12 @@ import {TaskListContext} from "../../../context/TaskListContext";
 
 const AddForm: FC = () => {
 
-    const {editItem, editTask
-    } = useContext(TaskListContext)
+    const {editItem, editTask, addTask} = useContext(TaskListContext)
 
     const [formData, setFormData] = useState({
         title: '',
         description: '',
-        time: 0,
+        time: '',
         visible: false,
         checked: false
     })
@@ -35,10 +34,21 @@ const AddForm: FC = () => {
         })
     }
 
+    const handleChangeTime = (e: any) => {
+        if (/^[\d]*\.?[\d]{0,2}$/.test(e.target.value)) {
+            setFormData({
+                ...formData,
+                time: e.target.value
+            })
+        }
+    }
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if (editItem !== undefined && editItem !== null) {
             editTask(formData.title, formData.description, formData.time, formData.visible, formData.checked, editItem.id)
+        } else {
+            addTask(formData.title, formData.description, formData.time, formData.visible, false)
         }
     }
 
@@ -46,7 +56,7 @@ const AddForm: FC = () => {
         <div className={styles.wrapper}>
             <form className={styles.add_form} onSubmit={handleSubmit}>
                 <div className={styles.title}>
-                    Редактирование задачи
+                    Добавление/редактирование задачи
                 </div>
                 <input
                     name='title'
@@ -65,12 +75,11 @@ const AddForm: FC = () => {
                 />
                 <input
                     name='time'
-                    type='number'
+                    type='text'
                     placeholder='Время на выполнение задачи, ч.'
-                    step="1"
                     className={styles.input}
                     value={formData.time}
-                    onChange={e => handleChange(e)}
+                    onChange={e => handleChangeTime(e)}
                 />
                 <label
                     htmlFor="visible"
@@ -88,7 +97,7 @@ const AddForm: FC = () => {
                     <span className={styles['checkbox-text']}>Видимый</span>
                 </label>
                 <div className={styles.actions}>
-                    <MyButton disabled={!editItem} variant='primary' type='submit'>
+                    <MyButton variant='primary' type='submit'>
                         Применить
                     </MyButton>
                     <MyButton variant='secondary'>
