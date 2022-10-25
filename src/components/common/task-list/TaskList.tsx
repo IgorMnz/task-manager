@@ -2,7 +2,6 @@ import React, {FC, useContext, useEffect, useState} from 'react';
 import styles from "./taskList.module.scss"
 import MenuBar from "../menu-bar/MenuBar";
 import FilterBar from "../filter-bar/FilterBar";
-import {ITasks} from "../../../types/ITasks";
 import TaskListItem from "../task-list-item/TaskListItem";
 import {TaskListContext} from "../../../context/TaskListContext";
 
