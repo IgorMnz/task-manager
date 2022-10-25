@@ -2,7 +2,6 @@ import React, {FC, useContext, useEffect, useState} from 'react';
 import styles from "./taskList.module.scss"
 import MenuBar from "../menu-bar/MenuBar";
 import FilterBar from "../filter-bar/FilterBar";
-import {ITasks} from "../../../types/ITasks";
 import TaskListItem from "../task-list-item/TaskListItem";
 import {TaskListContext} from "../../../context/TaskListContext";
 
@@ -29,11 +28,16 @@ const TaskList: FC = () => {
             <MenuBar/>
             <FilterBar/>
             {scroll && <div className={styles['shadow-box']}></div>}
-            <ul id='block' className={styles['task-list']}>
-                {tasks.map((task) => {
-                    return <TaskListItem task={task} key={task.id}/>
-                })}
-            </ul>
+            {tasks.length
+                ?
+                <ul id='block' className={styles['task-list']}>
+                    {tasks.map((task) => {
+                        return <TaskListItem task={task} key={task.id}/>
+                    })}
+                </ul>
+                :
+                <div className={styles['no-tasks']}>Нет задач</div>
+            }
         </div>
     );
 };

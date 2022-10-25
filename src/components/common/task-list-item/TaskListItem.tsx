@@ -11,14 +11,14 @@ interface TaskListItemProps {
 
 const TaskListItem: FC<TaskListItemProps> = ({task}) => {
 
-    const {handleCheck} = useContext(TaskListContext)
+    const {handleCheck, findItem, editItem} = useContext(TaskListContext)
 
 
     return (
         <>
-            <li>
+            <li onClick={() => findItem(task.id)}>
                 <div
-                    className={task.visible ? styles['item-dark'] : styles['item-light']}>
+                    className={editItem?.id === task.id ? styles['item-green'] : task.visible ? styles['item-dark'] : styles['item-light']}>
                     <div className={styles.check}>
                         <label htmlFor={task.id}>
                             <input
