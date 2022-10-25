@@ -45,6 +45,7 @@
       width: 95%;
       color: $accent-text-dark;
       background: $accent-secondary;
+      box-shadow: 0 0 5px 0.3rem rgba(255, 0, 0, 0.1);
       border: 1px solid red;
     }
 
@@ -79,6 +80,7 @@
       color: $accent-text-dark;
       background: $accent-secondary;
       border: 1px solid red;
+      box-shadow: 0 0 5px 0.3rem rgba(255, 0, 0, 0.1);
       resize: none;
     }
 
