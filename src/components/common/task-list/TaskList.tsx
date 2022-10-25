@@ -29,11 +29,16 @@ const TaskList: FC = () => {
             <MenuBar/>
             <FilterBar/>
             {scroll && <div className={styles['shadow-box']}></div>}
-            <ul id='block' className={styles['task-list']}>
-                {tasks.map((task) => {
-                    return <TaskListItem task={task} key={task.id}/>
-                })}
-            </ul>
+            {tasks.length
+                ?
+                <ul id='block' className={styles['task-list']}>
+                    {tasks.map((task) => {
+                        return <TaskListItem task={task} key={task.id}/>
+                    })}
+                </ul>
+                :
+                <div className={styles['no-tasks']}>Нет задач</div>
+            }
         </div>
     );
 };
