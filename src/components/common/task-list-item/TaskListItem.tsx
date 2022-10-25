@@ -1,26 +1,34 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 import styles from "./taskListItem.module.scss"
 import {ReactComponent as VisibleSvg} from '../../../assets/icons/visible.svg'
 import {ReactComponent as NotVisibleSvg} from '../../../assets/icons/not-visible.svg'
 import {ITasks} from "../../../types/ITasks";
+import {TaskListContext} from "../../../context/TaskListContext";
 
 interface TaskListItemProps {
     task: ITasks
 }
 
 const TaskListItem: FC<TaskListItemProps> = ({task}) => {
+
+    const {handleCheck} = useContext(TaskListContext)
+
+
     return (
         <>
             <li>
                 <div
                     className={task.visible ? styles['item-dark'] : styles['item-light']}>
                     <div className={styles.check}>
-                        <label htmlFor={task.title}>
+                        <label htmlFor={task.id}>
                             <input
                                 type="checkbox"
                                 className={styles.checkbox}
-                                id={task.title}
+                                id={task.id}
                                 name={task.title}
+                                value={task.id}
+                                onChange={() => handleCheck(task.id)}
+                                checked={task.checked}
                             />
                             <span className={styles['custom-checkbox']}></span>
                         </label>
