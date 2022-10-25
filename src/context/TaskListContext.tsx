@@ -41,7 +41,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             return task;
         });
         setTasks(modifiedTasks);
-        let arr: any = []
+        let arr: ITasks[] = []
         modifiedTasks.forEach(item => {
             if (item.checked) {
                 arr.push(item)
