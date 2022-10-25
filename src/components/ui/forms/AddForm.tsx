@@ -15,6 +15,18 @@ const AddForm: FC = () => {
         checked: false
     })
 
+    const [blur, setBlur] = useState({
+        title: false,
+        description: false,
+        time: false
+    })
+
+    const [errors, setErrors] = useState({
+        title: 'Введите корректное название',
+        description: 'Введите корректное описание',
+        time: 'Введите корректное время'
+    })
+
     useEffect(() => {
         if (editItem !== undefined && editItem !== null) {
             setFormData({
@@ -24,6 +36,7 @@ const AddForm: FC = () => {
                 time: editItem.time,
                 visible: editItem.visible
             })
+            setBlur({title: false, description: false, time: false})
         }
     }, [editItem])
 
@@ -34,12 +47,45 @@ const AddForm: FC = () => {
         })
     }
 
+    const handleChangeTitle = (e: any) => {
+        setFormData({
+            ...formData,
+            title: e.target.value
+        })
+        if (e.target.value.length > 128) {
+            setErrors({...errors, title: 'Длинна должна быть не более 128 символов'})
+        } else if (e.target.value === '') {
+            setErrors({...errors, title: 'Введите корректное название'})
+        } else {
+            setErrors({...errors, title: ''})
+        }
+    }
+
+    const handleChangeDescription = (e: any) => {
+        setFormData({
+            ...formData,
+            description: e.target.value
+        })
+        if (e.target.value.length > 512) {
+            setErrors({...errors, description: 'Длинна должна быть не более 512 символов'})
+        } else if (e.target.value === '') {
+            setErrors({...errors, description: 'Введите корректное описание'})
+        } else {
+            setErrors({...errors, description: ''})
+        }
+    }
+
     const handleChangeTime = (e: any) => {
         if (/^[\d]*\.?[\d]{0,2}$/.test(e.target.value)) {
             setFormData({
                 ...formData,
                 time: e.target.value
             })
+        }
+        if (e.target.value === '') {
+            setErrors({...errors, time: 'Некорректное время'})
+        } else {
+            setErrors({...errors, time: ''})
         }
     }
 
@@ -52,6 +98,20 @@ const AddForm: FC = () => {
         }
     }
 
+    const handleBlur = (e: any) => {
+        switch (e.target.name) {
+            case "title":
+                setBlur({...blur, title: true})
+                break
+            case "description":
+                setBlur({...blur, description: true})
+                break
+            case "time":
+                setBlur({...blur, time: true})
+                break
+        }
+    }
+
     return (
         <div className={styles.wrapper}>
             <form className={styles.add_form} onSubmit={handleSubmit}>
@@ -59,28 +119,37 @@ const AddForm: FC = () => {
                     Добавление/редактирование задачи
                 </div>
                 <input
+                    required
                     name='title'
                     type='text'
                     placeholder='Название'
                     className={styles.input}
                     value={formData.title}
-                    onChange={e => handleChange(e)}
+                    onChange={e => handleChangeTitle(e)}
+                    onBlur={(e) => handleBlur(e)}
                 />
+                {(blur.title && errors.title) && <div className={styles.error}>{errors.title}</div>}
                 <textarea
+                    required
                     name='description'
                     placeholder='Описание'
                     className={styles.input_textarea}
                     value={formData.description}
-                    onChange={e => handleChange(e)}
+                    onChange={e => handleChangeDescription(e)}
+                    onBlur={(e) => handleBlur(e)}
                 />
+                {(blur.description && errors.description) && <div className={styles.error}>{errors.description}</div>}
                 <input
+                    required
                     name='time'
                     type='text'
                     placeholder='Время на выполнение задачи, ч.'
                     className={styles.input}
                     value={formData.time}
                     onChange={e => handleChangeTime(e)}
+                    onBlur={(e) => handleBlur(e)}
                 />
+                {(blur.time && errors.time) && <div className={styles.error}>{errors.time}</div>}
                 <label
                     htmlFor="visible"
                     className={styles['checkbox-label']}
@@ -90,7 +159,7 @@ const AddForm: FC = () => {
                         name='visible'
                         type="checkbox"
                         className={styles.checkbox}
-                        onChange={e => handleChange(e)}
+                        onChange={handleChange}
                         checked={formData.visible}
                     />
                     <span className={styles['custom-checkbox']}></span>

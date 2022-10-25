@@ -6,11 +6,11 @@ import {v4 as uuidv4} from 'uuid';
 interface IContextProps {
     tasks: ITasks[];
     addTask: (title: string, description: string, time: string, visible: boolean, checked: boolean) => void;
-    handleCheck: (id: string) => void;
+    handleCheck: (id?: string) => void;
     handleRemove: () => void;
     checked: boolean;
-    findItem: (id: string) => void;
-    editTask: (title: string, description: string, time: string, visible: boolean, checked: boolean, id: string) => void;
+    findItem: (id?: string) => void;
+    editTask: (title: string, description: string, time: string, visible: boolean, checked: boolean, id?: string) => void;
     editItem: ITasks | undefined | null
 }
 
@@ -73,7 +73,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setEditItem(item)
     }
 
-    const handleCheck = (id: string) => {
+    const handleCheck = (id?: string) => {
         const copyTasks = [...tasks];
         const modifiedTasks = copyTasks.map((task) => {
             if (id === task.id) {
@@ -104,12 +104,12 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setTasks(modifiedTasks);
     };
 
-    const findItem = (id: string) => {
+    const findItem = (id?: string) => {
         const item: ITasks | undefined = tasks.find(task => task.id === id)
         setEditItem(item)
     }
 
-    const editTask = (title: string, description: string, time: string, visible: boolean, checked: boolean, id: string) => {
+    const editTask = (title: string, description: string, time: string, visible: boolean, checked: boolean, id?: string) => {
         const newTasks = tasks.map(task => (task.id === id) ? {title, description, time, visible, checked, id} : task)
 
         setTasks(newTasks)
