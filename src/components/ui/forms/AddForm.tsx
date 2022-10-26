@@ -40,13 +40,6 @@ const AddForm: FC = () => {
         }
     }, [editItem])
 
-    const handleChange = (e: any) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
-        })
-    }
-
     const handleChangeTitle = (e: any) => {
         setFormData({
             ...formData,
@@ -83,10 +76,17 @@ const AddForm: FC = () => {
             })
         }
         if (e.target.value === '') {
-            setErrors({...errors, time: 'Некорректное время'})
+            setErrors({...errors, time: 'Введите корректное время'})
         } else {
             setErrors({...errors, time: ''})
         }
+    }
+
+    const handleCheckbox = (e: any) => {
+        setFormData({
+            ...formData,
+            visible: e.target.checked
+        })
     }
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -159,7 +159,7 @@ const AddForm: FC = () => {
                         name='visible'
                         type="checkbox"
                         className={styles.checkbox}
-                        onChange={handleChange}
+                        onChange={handleCheckbox}
                         checked={formData.visible}
                     />
                     <span className={styles['custom-checkbox']}></span>

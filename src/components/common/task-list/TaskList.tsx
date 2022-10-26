@@ -7,9 +7,11 @@ import {TaskListContext} from "../../../context/TaskListContext";
 
 const TaskList: FC = () => {
 
-    const {tasks} = useContext(TaskListContext)
+    const {tasks, filterTasks, searchTask, term, filter} = useContext(TaskListContext)
 
     const [scroll, setScroll] = useState<boolean>(false)
+
+    const visibleData = filterTasks(searchTask(tasks, term), filter);
 
     const scrollCheck = () => {
         const block: HTMLElement | null = document.getElementById('block')
@@ -28,10 +30,10 @@ const TaskList: FC = () => {
             <MenuBar/>
             <FilterBar/>
             {scroll && <div className={styles['shadow-box']}></div>}
-            {tasks.length
+            {visibleData.length
                 ?
                 <ul id='block' className={styles['task-list']}>
-                    {tasks.map((task) => {
+                    {visibleData.map((task) => {
                         return <TaskListItem task={task} key={task.id}/>
                     })}
                 </ul>
