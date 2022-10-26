@@ -75,7 +75,7 @@ const AddForm: FC = () => {
                 time: e.target.value
             })
         }
-        if (e.target.value === '') {
+        if (e.target.value === '' || e.target.value[e.target.value.length - 1] === '.') {
             setErrors({...errors, time: 'Введите корректное время'})
         } else {
             setErrors({...errors, time: ''})
