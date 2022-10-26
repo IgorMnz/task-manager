@@ -127,12 +127,35 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
     const searchTask = (tasks: ITasks[], term: string) => {
         if (term.length === 0) {
             return tasks;
+        } else if (term[0] === ">") {
+            return tasks.filter(item => {
+                return item.time > term.slice(1)
+            })
+        } else if (term[0] === "<") {
+            return tasks.filter(item => {
+                return item.time < term.slice(1)
+            })
+        } else if (term[0] === "=") {
+            return tasks.filter(item => {
+                return item.time == term.slice(1)
+            })
+        } else if (term.slice(0, 2) === "!=") {
+            return tasks.filter(item => {
+                return item.time != term.slice(2)
+            })
+        } else if (term.slice(0, 2) === ">=") {
+            return tasks.filter(item => {
+                return item.time >= term.slice(2)
+            })
+        } else if (term.slice(0, 2) === "<=") {
+            return tasks.filter(item => {
+                return item.time <= term.slice(2)
+            })
         } else
             return tasks.filter(item => {
                 return (
                     item.title.toLowerCase().includes(term.toLowerCase()) ||
-                    item.description.toLowerCase().includes(term.toLowerCase()) ||
-                    item.time.toLowerCase().includes(term.toLowerCase())
+                    item.description.toLowerCase().includes(term.toLowerCase())
                 )
             })
     }

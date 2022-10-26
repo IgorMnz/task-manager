@@ -7,6 +7,8 @@ const SearchBar: FC = () => {
 
     const {term, handleChangeSearch} = useContext(TaskListContext)
 
+    console.log(term.slice(2))
+
     return (
         <div className={styles.wrapper}>
             <input
