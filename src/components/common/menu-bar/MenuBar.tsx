@@ -23,9 +23,11 @@ const MenuBar: FC = () => {
         switch (filter) {
             case 'visible':
                 setActiveVisible(!activeVisible)
+                setActiveNoVisible(false)
                 break
             case 'no-visible':
                 setActiveNoVisible(!activeNoVisible)
+                setActiveVisible(false)
                 break
         }
     }
