@@ -10,8 +10,8 @@ import {TaskListContext} from "../../../context/TaskListContext";
 
 const MenuBar: FC = () => {
 
-    const [activeVisible, setActiveVisible] = useState(false)
-    const [activeNoVisible, setActiveNoVisible] = useState(false)
+    const [activeVisible, setActiveVisible] = useState<boolean>(false)
+    const [activeNoVisible, setActiveNoVisible] = useState<boolean>(false)
 
     const {addTask, handleRemove, checked, onFilterSelect} = useContext(TaskListContext)
 

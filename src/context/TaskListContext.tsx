@@ -1,5 +1,5 @@
-import {createContext, FC, ReactNode, useState} from "react";
-import {IContextProps, ITasks} from "../types/ITasks";
+import {ChangeEvent, createContext, FC, ReactNode, useState} from "react";
+import {IContextProps, ITasks} from "../types/types";
 import {v4 as uuidv4} from 'uuid';
 import {mockTasks} from "../mock/tasks";
 
@@ -106,7 +106,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setTerm(term)
     }
 
-    const handleChangeSearch = (e: any) => {
+    const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value;
         setTerm(term)
         onUpdateSearch(term)

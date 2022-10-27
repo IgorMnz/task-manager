@@ -11,8 +11,8 @@ const FilterBar: FC = () => {
 
     const {sortTasks} = useContext(TaskListContext)
 
-    const [titleOrder, setTitleOrder] = useState(false)
-    const [timeOrder, setTimeOrder] = useState(false)
+    const [titleOrder, setTitleOrder] = useState<boolean>(false)
+    const [timeOrder, setTimeOrder] = useState<boolean>(false)
 
     const sortTitle = () => {
         sortTasks('title')

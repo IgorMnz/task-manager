@@ -1,4 +1,4 @@
-import React, {FC, useContext, useEffect, useState} from 'react';
+import React, {ChangeEvent, FC, useContext, useEffect, useState} from 'react';
 import styles from "./addForm.module.scss"
 import MyButton from "../buttons/MyButton";
 import {TaskListContext} from "../../../context/TaskListContext";
@@ -40,7 +40,7 @@ const AddForm: FC = () => {
         }
     }, [editItem])
 
-    const handleChangeTitle = (e: any) => {
+    const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
             title: e.target.value
@@ -54,7 +54,7 @@ const AddForm: FC = () => {
         }
     }
 
-    const handleChangeDescription = (e: any) => {
+    const handleChangeDescription = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             description: e.target.value
@@ -68,7 +68,7 @@ const AddForm: FC = () => {
         }
     }
 
-    const handleChangeTime = (e: any) => {
+    const handleChangeTime = (e: ChangeEvent<HTMLInputElement>) => {
         if (/^[\d]*\.?[\d]{0,2}$/.test(e.target.value)) {
             setFormData({
                 ...formData,
@@ -82,7 +82,7 @@ const AddForm: FC = () => {
         }
     }
 
-    const handleCheckbox = (e: any) => {
+    const handleCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
             visible: e.target.checked
@@ -98,7 +98,7 @@ const AddForm: FC = () => {
         }
     }
 
-    const handleBlur = (e: any) => {
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLTextAreaElement>) => {
         switch (e.target.name) {
             case "title":
                 setBlur({...blur, title: true})

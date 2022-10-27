@@ -1,3 +1,5 @@
+import {ChangeEvent} from "react";
+
 export interface ITasks {
     id?: string
     title: string
@@ -22,6 +24,6 @@ export interface IContextProps {
     onFilterSelect: (filter: string) => void;
     searchTask: (tasks: ITasks[], term: string) => ITasks[];
     filterTasks: (tasks: ITasks[], filter: string) => ITasks[];
-    handleChangeSearch: (e: any) => void;
+    handleChangeSearch: (e: ChangeEvent<HTMLInputElement>) => void;
     sortTasks: (col: string) => void;
 }

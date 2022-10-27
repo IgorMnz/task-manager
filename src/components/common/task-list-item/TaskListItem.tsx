@@ -2,7 +2,7 @@ import React, {FC, useContext} from 'react';
 import styles from "./taskListItem.module.scss"
 import {ReactComponent as VisibleSvg} from '../../../assets/icons/visible.svg'
 import {ReactComponent as NotVisibleSvg} from '../../../assets/icons/not-visible.svg'
-import {ITasks} from "../../../types/ITasks";
+import {ITasks} from "../../../types/types";
 import {TaskListContext} from "../../../context/TaskListContext";
 
 interface TaskListItemProps {
