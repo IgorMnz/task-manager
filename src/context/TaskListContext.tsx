@@ -19,6 +19,7 @@ interface IContextProps {
     searchTask: (tasks: ITasks[], term: string) => ITasks[];
     filterTasks: (tasks: ITasks[], filter: string) => ITasks[];
     handleChangeSearch: (e: any) => void;
+    sortTasks: (col: string) => void;
 }
 
 interface Props {
@@ -33,7 +34,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             id: "1",
             title: 'Элемент 1',
             description: 'Описание элемента 1',
-            time: "1.50",
+            time: "0.75",
             visible: true,
             checked: false
         },
@@ -57,7 +58,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             id: "4",
             title: 'Элемент 4',
             description: 'Описание элемента 4',
-            time: "0.75",
+            time: "1.50",
             visible: false,
             checked: false
         },
@@ -75,6 +76,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
     const [editItem, setEditItem] = useState<ITasks | undefined | null>(null)
     const [term, setTerm] = useState<string>('')
     const [filter, setFilter] = useState('all')
+    const [order, setOrder] = useState('DSC')
 
     const addTask = (title: string, description: string, time: string, visible: boolean, checked: boolean) => {
         const item = {id: uuidv4(), title, description, time, visible, checked}
@@ -187,6 +189,23 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setFilter(filter)
     }
 
+    const sortTasks = (col: string) => {
+        if (order === "ASC") {
+            const sorted = [...tasks].sort((a: any, b: any) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+            )
+            setTasks(sorted)
+            setOrder("DSC")
+        }
+        if (order === "DSC") {
+            const sorted = [...tasks].sort((a: any, b: any) =>
+                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+            )
+            setTasks(sorted)
+            setOrder("ASC")
+        }
+    }
+
     return (
         <TaskListContext.Provider value={{
             tasks,
@@ -203,7 +222,8 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             onFilterSelect,
             searchTask,
             filterTasks,
-            handleChangeSearch
+            handleChangeSearch,
+            sortTasks,
         }}>
             {children}
         </TaskListContext.Provider>
