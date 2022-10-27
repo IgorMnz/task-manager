@@ -15,12 +15,12 @@ const FilterBar: FC = () => {
     const [timeOrder, setTimeOrder] = useState(false)
 
     const sortTitle = () => {
-        sortTasks('title')
+        sortTasks()
         setTitleOrder(!titleOrder)
     }
 
     const sortTime = () => {
-        sortTasks('time')
+        sortTasks()
         setTimeOrder(!timeOrder)
     }
 

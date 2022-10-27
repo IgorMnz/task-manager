@@ -19,12 +19,17 @@ interface IContextProps {
     searchTask: (tasks: ITasks[], term: string) => ITasks[];
     filterTasks: (tasks: ITasks[], filter: string) => ITasks[];
     handleChangeSearch: (e: any) => void;
-    sortTasks: (col: string) => void;
-    order: string
+    sortTasks: () => void;
 }
 
 interface Props {
     children: ReactNode;
+}
+
+function by<T extends keyof U, U>(property: T): (a: U, b: U) => number {
+    return (a, b) => {
+        return a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+    };
 }
 
 export const TaskListContext = createContext({} as IContextProps)
@@ -190,18 +195,14 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setFilter(filter)
     }
 
-    const sortTasks = (col: any) => {
+    const sortTasks = () => {
         if (order === "ASC") {
-            const sorted = [...tasks].sort((a: any, b: any) =>
-                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
-            )
+            const sorted = [...tasks].sort(by('title'))
             setTasks(sorted)
             setOrder("DSC")
         }
         if (order === "DSC") {
-            const sorted = [...tasks].sort((a: any, b: any) =>
-                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
-            )
+            const sorted = [...tasks].sort(by('time'))
             setTasks(sorted)
             setOrder("ASC")
         }
@@ -225,7 +226,6 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             filterTasks,
             handleChangeSearch,
             sortTasks,
-            order
         }}>
             {children}
         </TaskListContext.Provider>
