@@ -15,10 +15,12 @@ const MenuBar: FC = () => {
 
     const {addTask, handleRemove, checked, onFilterSelect} = useContext(TaskListContext)
 
+    //Функция по добавлению новой задачи с указанными данными
     const handleAdding = () => {
         addTask('Новая задача', 'Описание новой задачи', "1", true, false)
     }
 
+    // Функция, которая проверяет применен ли фильтр и устанавливает соответствующее состояние
     const visible = (filter: string) => {
         switch (filter) {
             case 'visible':

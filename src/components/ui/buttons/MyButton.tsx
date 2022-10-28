@@ -11,6 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const MyButton: FC<ButtonProps> = ({type = 'button', onClick, variant, children, ...props}) => {
 
+    // Функция, которая присваивает определенный стиль для кнопки, переданный через props - variant
     const buttonStyle = (variant: string | undefined) => {
         switch (variant) {
             case "primary":

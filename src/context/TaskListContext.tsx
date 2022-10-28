@@ -18,12 +18,14 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
     const [filter, setFilter] = useState('all')
     const [order, setOrder] = useState('DSC')
 
+    // Функция для добавления новой задачи в список задач
     const addTask = (title: string, description: string, time: string, visible: boolean, checked: boolean) => {
         const item = {id: uuidv4(), title, description, time, visible, checked}
         setTasks([...tasks, item])
         setEditItem(item)
     }
 
+    // Функция для установки чекбокса для каждой отдельной задачи и выбора нескольких задач с помощью чекбокса
     const handleCheck = (id?: string) => {
         const copyTasks = [...tasks];
         const modifiedTasks = copyTasks.map((task) => {
@@ -46,6 +48,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         }
     };
 
+    // Функция для удаления задачи/задач, выбранных чекбоксом
     const handleRemove = () => {
         const copyTasks = [...tasks];
         const modifiedTasks = copyTasks.filter(
@@ -55,17 +58,23 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setTasks(modifiedTasks);
     };
 
+    // Функция для поиска выбранной (активной) задачи
     const findItem = (id?: string) => {
         const item: ITasks | undefined = tasks.find(task => task.id === id)
         setEditItem(item)
     }
 
+    // Функция для редактирования выбранной (активной) задачи
     const editTask = (title: string, description: string, time: string, visible: boolean, checked: boolean, id?: string) => {
         const newTasks = tasks.map(task => (task.id === id) ? {title, description, time, visible, checked, id} : task)
 
         setTasks(newTasks)
     }
 
+    /*Функция для поиска задачи по определенным критериям.
+    Текстовый поиск осуществляется по полям title и description.
+    Поиск по полю time осуществляется строкой [оператор сравнения][число]
+    */
     const searchTask = (tasks: ITasks[], term: string) => {
         if (term.length === 0) {
             return tasks;
@@ -102,16 +111,19 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             })
     }
 
+    // Функция по присваиванию поискового слова введенного в поисковом инпуте
     const onUpdateSearch = (term: string) => {
         setTerm(term)
     }
 
+    // Функция для обработчика событий onChange для поискового инпута
     const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value;
         setTerm(term)
         onUpdateSearch(term)
     }
 
+    // Функция для фильтрации задачи по свойству visible
     const filterTasks = (tasks: ITasks[], filter: string) => {
         switch (filter) {
             case 'visible':
@@ -125,10 +137,12 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         }
     }
 
+    // Функция для установки примененного фильтра
     const onFilterSelect = (filter: string) => {
         setFilter(filter)
     }
 
+    //Функция для сортировки задач по возрастанию/по убыванию
     const sortTasks = (col: string) => {
         if (order === "ASC") {
             const sorted = [...tasks].sort((a: any, b: any) =>

@@ -11,8 +11,10 @@ const TaskList: FC = () => {
 
     const [scroll, setScroll] = useState<boolean>(false)
 
+    // Записываем в переменную список отфильтрованных по фильтрам или поиску задач
     const visibleData = filterTasks(searchTask(tasks, term), filter);
 
+    // Функция по проверке высоты блока и добавления скролла для списка задач
     const scrollCheck = () => {
         const block: HTMLElement | null = document.getElementById('block')
         if (block !== null) {

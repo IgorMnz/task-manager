@@ -13,7 +13,6 @@ const TaskListItem: FC<TaskListItemProps> = ({task}) => {
 
     const {handleCheck, findItem, editItem} = useContext(TaskListContext)
 
-
     return (
         <>
             <li onClick={() => findItem(task.id)}>

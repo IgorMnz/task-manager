@@ -40,6 +40,7 @@ const AddForm: FC = () => {
         }
     }, [editItem])
 
+    // Функция для обработчика событий onChange для поля title и валидации поля
     const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
@@ -54,6 +55,7 @@ const AddForm: FC = () => {
         }
     }
 
+    // Функция для обработчика событий onChange для поля description и валидации поля
     const handleChangeDescription = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
@@ -68,6 +70,7 @@ const AddForm: FC = () => {
         }
     }
 
+    // Функция для обработчика событий onChange для поля time и валидации поля
     const handleChangeTime = (e: ChangeEvent<HTMLInputElement>) => {
         if (/^[\d]*\.?[\d]{0,2}$/.test(e.target.value)) {
             setFormData({
@@ -82,6 +85,7 @@ const AddForm: FC = () => {
         }
     }
 
+    // Функция для обработчика событий onChange для чекбокса
     const handleCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
@@ -89,6 +93,7 @@ const AddForm: FC = () => {
         })
     }
 
+    // Функция для обработчика событий onSubmit для формы
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if (editItem !== undefined && editItem !== null) {
@@ -98,6 +103,7 @@ const AddForm: FC = () => {
         }
     }
 
+    // Функция для обработчика событий onBlur для полей title, description, time
     const handleBlur = (e: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLTextAreaElement>) => {
         switch (e.target.name) {
             case "title":
