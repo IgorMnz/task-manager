@@ -1,15 +1,12 @@
-@import "../../../styles/variables/colors";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .wrapper {
   position: relative;
   display: flex;
 
   .input {
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
+    @include text(12px, 14px);
     padding-left: 12px;
     color: $accent-text-dark;
     width: 310px;

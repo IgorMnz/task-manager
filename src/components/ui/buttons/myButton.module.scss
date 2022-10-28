@@ -1,61 +1,22 @@
-@import "../../../styles/variables/colors";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .primary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  height: 32px;
-  width: 150px;
-  background: $accent-secondary;
-  border: none;
-  color: $accent-text-light;
-  cursor: pointer;
+  @include text(12px, 14px);
+  @include button($accent-secondary, 150px);
 }
 
 .menu_primary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  background: $accent-secondary;
-  border: none;
-  color: $accent-text-light;
-  cursor: pointer;
+  @include button($accent-secondary, 32px);
 }
 
 .secondary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  height: 32px;
-  width: 150px;
-  background: $gray;
-  border: none;
-  color: $accent-text-light;
-  cursor: pointer;
+  @include text(12px, 14px);
+  @include button($gray, 150px);
 }
 
 .menu_secondary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  background: $gray;
-  border: none;
-  color: $accent-text-light;
-  cursor: pointer;
+  @include button($gray, 32px);
 }
 
 .primary:hover, .menu_primary:hover {

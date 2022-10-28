@@ -1,4 +1,5 @@
-@import "../../../styles/variables/colors";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .item-green {
   display: flex;
@@ -73,15 +74,11 @@
 }
 
 .title {
+  @include text(12px, 14px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding-left: 8px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
   color: $white;
   min-height: 38px;
   max-height: 100px;
@@ -89,15 +86,11 @@
 }
 
 .description {
+  @include text(12px, 14px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding-left: 8px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
   color: $white;
   min-height: 38px;
   max-height: 100px;
@@ -105,14 +98,10 @@
 }
 
 .time {
+  @include text(12px, 14px);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
   color: $white;
   height: 38px;
   width: 61px;

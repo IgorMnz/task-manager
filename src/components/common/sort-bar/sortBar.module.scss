@@ -1,11 +1,12 @@
-@import "../../../styles/variables/colors";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .wrapper {
   display: flex;
   justify-content: space-between;
   width: 470px;
   height: 32px;
-  margin: 16px 24px 0px 24px;
+  margin: 16px 24px 0 24px;
 
   .checkbox {
     width: 36px;
@@ -13,32 +14,25 @@
   }
 
   .title {
+    @include text(12px, 14px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 13px;
     width: 123px;
     background: $accent-main;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
     color: $white;
     cursor: pointer;
   }
 
   .description {
+    @include text(12px, 14px);
     display: flex;
     align-items: center;
     width: 155px;
     padding-left: 25px;
     background: $accent-main;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
+
     color: $white;
   }
 

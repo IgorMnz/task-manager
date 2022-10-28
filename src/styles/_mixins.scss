@@ -1,0 +1,23 @@
+@import "./variables";
+
+/* Mixin for text */
+@mixin text($font-size, $line-height) {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+/* Mixin for button */
+@mixin button($background, $width) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: $width;
+  background: $background;
+  border: none;
+  color: $accent-text-light;
+  cursor: pointer;
+}

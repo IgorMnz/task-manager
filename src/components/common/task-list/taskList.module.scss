@@ -1,4 +1,5 @@
-@import "../../../styles/variables/colors";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .wrapper {
   width: 518px;
@@ -24,14 +25,10 @@
   }
 
   .no-tasks {
+    @include text(14px, 14px);
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 14px;
     color: $accent-text-dark;
   }
 }
