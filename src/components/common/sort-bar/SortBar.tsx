@@ -1,5 +1,5 @@
 import React, {FC, useContext, useState} from 'react';
-import styles from "./filterBar.module.scss";
+import styles from "./sortBar.module.scss";
 import {ReactComponent as CheckboxSvg} from "../../../assets/icons/checkbox.svg";
 import {ReactComponent as ArrowUpSvg} from "../../../assets/icons/arrow-up.svg";
 import {ReactComponent as ArrowDownSvg} from "../../../assets/icons/arrow-down.svg";
@@ -7,7 +7,7 @@ import {ReactComponent as TimeSvg} from "../../../assets/icons/Time.svg";
 import {ReactComponent as VisibleSvg} from "../../../assets/icons/visible.svg";
 import {TaskListContext} from "../../../context/TaskListContext";
 
-const FilterBar: FC = () => {
+const SortBar: FC = () => {
 
     const {sortTasks} = useContext(TaskListContext)
 
@@ -47,4 +47,4 @@ const FilterBar: FC = () => {
     );
 };
 
-export default FilterBar;
+export default SortBar;

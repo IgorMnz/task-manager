@@ -1,7 +1,7 @@
 import React, {FC, useContext, useEffect, useState} from 'react';
 import styles from "./taskList.module.scss"
 import MenuBar from "../menu-bar/MenuBar";
-import FilterBar from "../filter-bar/FilterBar";
+import SortBar from "../sort-bar/SortBar";
 import TaskListItem from "../task-list-item/TaskListItem";
 import {TaskListContext} from "../../../context/TaskListContext";
 
@@ -28,7 +28,7 @@ const TaskList: FC = () => {
     return (
         <div className={styles.wrapper}>
             <MenuBar/>
-            <FilterBar/>
+            <SortBar/>
             {scroll && <div className={styles['shadow-box']}></div>}
             {visibleData.length
                 ?

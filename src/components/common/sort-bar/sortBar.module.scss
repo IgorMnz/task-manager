@@ -60,3 +60,15 @@
     background: $accent-main;
   }
 }
+
+.title:hover, .time:hover {
+  transition: .2s;
+  background: $accent-main;
+  box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
+}
+
+.title:active, .time:active {
+  color: $white;
+  background: $accent-text-light;
+  box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
+}

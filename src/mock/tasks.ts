@@ -19,7 +19,7 @@ export const mockTasks = [
         id: "3",
         title: 'Элемент 3',
         description: 'Описание элемента 3',
-        time: "1.0",
+        time: "1",
         visible: false,
         checked: false
     },
@@ -27,7 +27,7 @@ export const mockTasks = [
         id: "4",
         title: 'Элемент 4',
         description: 'Описание элемента 4',
-        time: "1.50",
+        time: "1.5",
         visible: false,
         checked: false
     },
@@ -35,7 +35,7 @@ export const mockTasks = [
         id: "5",
         title: 'Элемент 5',
         description: 'Описание элемента 5',
-        time: "0.50",
+        time: "0.1",
         visible: true,
         checked: false
     },
