@@ -28,4 +28,16 @@
   box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
 }
 
+@media only screen and (max-width: $md) {
+  .input {
+    width: 280px !important;
+  }
+}
+
+@media only screen and (max-width: $sm) {
+  .input {
+    width: 160px !important;
+  }
+}
+
 

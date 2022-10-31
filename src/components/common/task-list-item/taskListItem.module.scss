@@ -131,3 +131,22 @@
 li:first-child {
   margin-top: 4px;
 }
+
+@media only screen and (max-width: $md) {
+  .item-green, .item-dark, .item-light {
+    margin: 4px 10px;
+    width: 435px;
+  }
+}
+
+@media only screen and (max-width: $sm) {
+  .item-green, .item-dark, .item-light {
+    margin: 4px 5px;
+    width: 293px;
+  }
+
+  .title, .description, .time {
+    font-size: 11px !important;
+    margin: 0 5px;
+  }
+}

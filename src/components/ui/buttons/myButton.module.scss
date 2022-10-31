@@ -42,3 +42,9 @@
   background: darkgray;
   box-shadow: 0 0 5px 0.3rem rgba(196, 196, 196, 0.25);
 }
+
+@media only screen and (max-width: $sm) {
+  .primary, .secondary {
+    width: 140px !important;
+  }
+}

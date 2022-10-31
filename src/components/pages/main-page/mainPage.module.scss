@@ -8,3 +8,24 @@
   background-color: $light-gray;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+@media only screen and (max-width: $lg) {
+  .wrapper {
+    flex-wrap: wrap;
+    width: 520px;
+    height: 1000px;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: $md) {
+  .wrapper {
+    width: 460px;
+  }
+}
+
+@media only screen and (max-width: $sm) {
+  .wrapper {
+    width: 311px;
+  }
+}

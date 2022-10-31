@@ -124,53 +124,56 @@ const AddForm: FC = () => {
                 <div className={styles.title}>
                     Добавление/редактирование задачи
                 </div>
-                <input
-                    required
-                    name='title'
-                    type='text'
-                    placeholder='Название'
-                    className={(blur.title && errors.title) ? styles['input-error'] : styles.input}
-                    value={formData.title}
-                    onChange={e => handleChangeTitle(e)}
-                    onBlur={(e) => handleBlur(e)}
-                />
-                {(blur.title && errors.title) && <div className={styles.error}>{errors.title}</div>}
-                <textarea
-                    required
-                    name='description'
-                    placeholder='Описание'
-                    className={(blur.description && errors.description) ? styles['input-textarea-error'] : styles['input-textarea']}
-                    value={formData.description}
-                    onChange={e => handleChangeDescription(e)}
-                    onBlur={(e) => handleBlur(e)}
-                />
-                {(blur.description && errors.description) && <div className={styles.error}>{errors.description}</div>}
-                <input
-                    required
-                    name='time'
-                    type='text'
-                    placeholder='Время на выполнение задачи, ч.'
-                    className={(blur.time && errors.time) ? styles['input-error'] : styles.input}
-                    value={formData.time}
-                    onChange={e => handleChangeTime(e)}
-                    onBlur={(e) => handleBlur(e)}
-                />
-                {(blur.time && errors.time) && <div className={styles.error}>{errors.time}</div>}
-                <label
-                    htmlFor="visible"
-                    className={styles['checkbox-label']}
-                >
+                <div className={styles.inputs}>
                     <input
-                        id="visible"
-                        name='visible'
-                        type="checkbox"
-                        className={styles.checkbox}
-                        onChange={handleCheckbox}
-                        checked={formData.visible}
+                        required
+                        name='title'
+                        type='text'
+                        placeholder='Название'
+                        className={(blur.title && errors.title) ? styles['input-error'] : styles.input}
+                        value={formData.title}
+                        onChange={e => handleChangeTitle(e)}
+                        onBlur={(e) => handleBlur(e)}
                     />
-                    <span className={styles['custom-checkbox']}></span>
-                    <span className={styles['checkbox-text']}>Видимый</span>
-                </label>
+                    {(blur.title && errors.title) && <div className={styles.error}>{errors.title}</div>}
+                    <textarea
+                        required
+                        name='description'
+                        placeholder='Описание'
+                        className={(blur.description && errors.description) ? styles['input-textarea-error'] : styles['input-textarea']}
+                        value={formData.description}
+                        onChange={e => handleChangeDescription(e)}
+                        onBlur={(e) => handleBlur(e)}
+                    />
+                    {(blur.description && errors.description) &&
+                        <div className={styles.error}>{errors.description}</div>}
+                    <input
+                        required
+                        name='time'
+                        type='text'
+                        placeholder='Время на выполнение задачи, ч.'
+                        className={(blur.time && errors.time) ? styles['input-error'] : styles.input}
+                        value={formData.time}
+                        onChange={e => handleChangeTime(e)}
+                        onBlur={(e) => handleBlur(e)}
+                    />
+                    {(blur.time && errors.time) && <div className={styles.error}>{errors.time}</div>}
+                    <label
+                        htmlFor="visible"
+                        className={styles['checkbox-label']}
+                    >
+                        <input
+                            id="visible"
+                            name='visible'
+                            type="checkbox"
+                            className={styles.checkbox}
+                            onChange={handleCheckbox}
+                            checked={formData.visible}
+                        />
+                        <span className={styles['custom-checkbox']}></span>
+                        <span className={styles['checkbox-text']}>Видимый</span>
+                    </label>
+                </div>
                 <div className={styles.actions}>
                     <MyButton variant='primary' type='submit'>
                         Применить
