@@ -1,0 +1,19 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+
+  .title {
+    @include text(24px, 28px);
+    margin: 20px 0;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+}

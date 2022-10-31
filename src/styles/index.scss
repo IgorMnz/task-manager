@@ -7,6 +7,10 @@ body {
   background-color: $gray;
 }
 
+A {
+  text-decoration: none; /* Убирает подчеркивание для ссылок */
+}
+
 /* Text Input placeholder */
 
 ::placeholder {

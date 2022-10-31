@@ -1,6 +1,6 @@
-@import "../../../styles/variables";
+@import "../styles/variables";
 
-.wrapper {
+.main {
   display: flex;
   margin: 0 auto;
   width: 900px;
@@ -10,7 +10,7 @@
 }
 
 @media only screen and (max-width: $lg) {
-  .wrapper {
+  .main {
     flex-wrap: wrap;
     width: 520px;
     height: 1000px;
@@ -19,13 +19,13 @@
 }
 
 @media only screen and (max-width: $md) {
-  .wrapper {
+  .main {
     width: 460px;
   }
 }
 
 @media only screen and (max-width: $sm) {
-  .wrapper {
+  .main {
     width: 311px;
   }
 }
