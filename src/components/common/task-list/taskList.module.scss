@@ -2,7 +2,7 @@
 @import "../../../styles/mixins";
 
 .wrapper {
-  width: 518px;
+  width: 516px;
   border-right: 2px solid #83BCC3;
   //padding: 16px 24px 13px 24px;
 
@@ -32,6 +32,36 @@
     color: $accent-text-dark;
   }
 }
+
+@media only screen and (max-width: $lg) {
+  .wrapper {
+    border: 2px solid #83BCC3;
+  }
+  .task-list {
+    height: 384px;
+  }
+}
+
+@media only screen and (max-width: $md) {
+  .wrapper {
+    width: 456px;
+  }
+
+  .shadow-box {
+    width: 456px !important;
+  }
+}
+
+@media only screen and (max-width: $sm) {
+  .wrapper {
+    width: 307px;
+  }
+
+  .shadow-box {
+    width: 307px !important;
+  }
+}
+
 
 
 

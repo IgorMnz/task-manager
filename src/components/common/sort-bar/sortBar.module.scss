@@ -66,3 +66,46 @@
   background: $accent-text-light;
   box-shadow: 0 0 5px 0.3rem rgba(131, 188, 195, 0.25);
 }
+
+@media only screen and (max-width: $md) {
+  .wrapper {
+    margin: 16px 10px 0 10px;
+    width: 435px;
+  }
+
+  .title {
+    width: 90px !important;
+  }
+}
+
+@media only screen and (max-width: $sm) {
+  .wrapper {
+    margin: 16px 5px 0 5px;
+    width: 294px;
+  }
+
+  .checkbox {
+    width: 36px !important;
+  }
+
+  .title {
+    font-size: 11px !important;
+    width: 67px !important;
+    padding-left: 5px !important;
+  }
+
+  .description {
+    font-size: 11px !important;
+    width: 81px !important;
+    padding-left: 12px !important;
+  }
+
+  .time {
+    width: 31px !important;
+  }
+
+  .visible {
+    width: 30px !important;
+  }
+
+}
