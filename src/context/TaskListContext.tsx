@@ -1,7 +1,7 @@
-import {ChangeEvent, createContext, FC, ReactNode, useState} from "react";
+import {ChangeEvent, createContext, FC, ReactNode, useEffect, useState} from "react";
 import {IContextProps, ITasks} from "../types/types";
 import {v4 as uuidv4} from 'uuid';
-import {mockTasks} from "../mock/tasks";
+import {useHttp} from "../hooks/useHttp";
 
 interface Props {
     children: ReactNode;
@@ -10,13 +10,21 @@ interface Props {
 export const TaskListContext = createContext({} as IContextProps)
 
 const TaskListContextProvider: FC<Props> = ({children}) => {
-    const [tasks, setTasks] = useState<ITasks[]>(mockTasks)
+    const [tasks, setTasks] = useState<ITasks[]>([])
 
     const [checked, setChecked] = useState<boolean>(false);
     const [editItem, setEditItem] = useState<ITasks | undefined | null>(null)
     const [term, setTerm] = useState<string>('')
     const [filter, setFilter] = useState('all')
     const [order, setOrder] = useState('DSC')
+
+    const {request} = useHttp()
+
+    useEffect(() => {
+        request("https://635f96b6ca0fe3c21a9f8c08.mockapi.io/tasks")
+            .then((data: ITasks[]) => setTasks(data))
+            .catch((error) => console.log(error))
+    }, []);
 
     // Функция для добавления новой задачи в список задач
     const addTask = (title: string, description: string, time: string, visible: boolean, checked: boolean) => {

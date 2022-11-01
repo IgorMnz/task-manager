@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-// Костомный хук по проверке высоты блока и добавления скролла к блоку
+// Кaстомный хук по проверке высоты блока и добавления скролла к блоку
 export const useScroll = () => {
     const [scroll, setScroll] = useState<boolean>(false)
 
