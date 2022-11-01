@@ -1,38 +1,29 @@
-import React, {FC, useContext, useEffect, useRef, useState} from 'react';
+import React, {FC, useContext, useEffect, useRef} from 'react';
 import styles from "./taskList.module.scss"
 import MenuBar from "../menu-bar/MenuBar";
 import SortBar from "../sort-bar/SortBar";
 import TaskListItem from "../task-list-item/TaskListItem";
 import {TaskListContext} from "../../../context/TaskListContext";
+import {useScroll} from "../../../hooks/useScroll";
 
 const TaskList: FC = () => {
 
     const {tasks, setTasks, filterTasks, searchTask, term, filter} = useContext(TaskListContext)
 
-    const [scroll, setScroll] = useState<boolean>(false)
-
-    // Записываем в переменную список отфильтрованных по фильтрам или поиску задач
-    const visibleData = filterTasks(searchTask(tasks, term), filter);
-
-    // Функция по проверке высоты блока и добавления скролла для списка задач
-    const scrollCheck = () => {
-        const block: HTMLElement | null = document.getElementById('block')
-        if (block !== null) {
-            const isScroll: boolean = block.scrollHeight > block.clientHeight
-            isScroll ? setScroll(true) : setScroll(false)
-        }
-    }
+    const {scroll, scrollCheck} = useScroll()
 
     useEffect(() => {
         scrollCheck()
     }, [scroll, tasks])
+
+    // Записываем в переменную список отфильтрованных по фильтрам или поиску задач
+    const visibleData = filterTasks(searchTask(tasks, term), filter);
 
     const dragItem = useRef<any>(null)
     const dragOverItem = useRef<any>(null)
 
     // Функция сортировки для drap&drop
     const handleSort = () => {
-
         let newTasksItems = [...tasks]
 
         // Удаляем и сохраняем содержимое перетаскиваемого элемента
