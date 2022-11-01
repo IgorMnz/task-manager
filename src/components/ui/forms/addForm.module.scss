@@ -137,7 +137,8 @@
 @media only screen and (max-width: $lg) {
   .wrapper {
     width: 518px;
-    border: 2px solid #83BCC3;
+    border-left: none;
+    border-top: 2px solid #83BCC3;
   }
 
   .add_form {
@@ -168,7 +169,6 @@
 @media only screen and (max-width: $md) {
   .wrapper {
     width: 456px;
-    border: 2px solid #83BCC3;
   }
 
   .add_form {
@@ -199,7 +199,6 @@
 @media only screen and (max-width: $sm) {
   .wrapper {
     width: 307px;
-    border: 2px solid #83BCC3;
   }
 
   .add_form {
