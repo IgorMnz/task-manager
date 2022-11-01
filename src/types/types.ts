@@ -26,4 +26,5 @@ export interface IContextProps {
     filterTasks: (tasks: ITasks[], filter: string) => ITasks[];
     handleChangeSearch: (e: ChangeEvent<HTMLInputElement>) => void;
     sortTasks: (col: string) => void;
+    setTasks: any
 }

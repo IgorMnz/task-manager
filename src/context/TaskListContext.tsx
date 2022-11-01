@@ -178,6 +178,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             filterTasks,
             handleChangeSearch,
             sortTasks,
+            setTasks
         }}>
             {children}
         </TaskListContext.Provider>
