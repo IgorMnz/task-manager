@@ -1,4 +1,4 @@
-import {ChangeEvent} from "react";
+import {ChangeEvent, Dispatch, SetStateAction} from "react";
 
 export interface ITasks {
     id?: string
@@ -26,4 +26,5 @@ export interface IContextProps {
     filterTasks: (tasks: ITasks[], filter: string) => ITasks[];
     handleChangeSearch: (e: ChangeEvent<HTMLInputElement>) => void;
     sortTasks: (col: string) => void;
+    setTasks: Dispatch<SetStateAction<ITasks[]>>
 }

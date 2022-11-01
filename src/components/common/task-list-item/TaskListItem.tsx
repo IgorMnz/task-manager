@@ -6,16 +6,26 @@ import {ITasks} from "../../../types/types";
 import {TaskListContext} from "../../../context/TaskListContext";
 
 interface TaskListItemProps {
-    task: ITasks
+    task: ITasks,
+    index: number,
+    dragItem: any,
+    dragOverItem: any,
+    handleSort: () => void,
 }
 
-const TaskListItem: FC<TaskListItemProps> = ({task}) => {
+const TaskListItem: FC<TaskListItemProps> = ({task, index, dragItem, dragOverItem, handleSort}) => {
 
     const {handleCheck, findItem, editItem} = useContext(TaskListContext)
 
     return (
         <>
-            <li onClick={() => findItem(task.id)}>
+            <li
+                onClick={() => findItem(task.id)}
+                draggable
+                onDragStart={() => (dragItem.current = index)}
+                onDragEnter={() => (dragOverItem.current = index)}
+                onDragEnd={handleSort}
+                onDragOver={(e) => e.preventDefault()}>
                 <div
                     className={editItem?.id === task.id ? styles['item-green'] : task.visible ? styles['item-dark'] : styles['item-light']}>
                     <div className={styles.check}>
