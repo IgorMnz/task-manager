@@ -10,7 +10,6 @@ const TaskList: FC = () => {
     const {tasks, setTasks, filterTasks, searchTask, term, filter} = useContext(TaskListContext)
 
     const [scroll, setScroll] = useState<boolean>(false)
-    const [newTaskItem, setNewTaskItem] = useState("")
 
     // Записываем в переменную список отфильтрованных по фильтрам или поиску задач
     const visibleData = filterTasks(searchTask(tasks, term), filter);

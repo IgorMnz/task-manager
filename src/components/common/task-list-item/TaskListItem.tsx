@@ -7,10 +7,10 @@ import {TaskListContext} from "../../../context/TaskListContext";
 
 interface TaskListItemProps {
     task: ITasks,
-    index: any,
+    index: number,
     dragItem: any,
     dragOverItem: any,
-    handleSort: any,
+    handleSort: () => void,
 }
 
 const TaskListItem: FC<TaskListItemProps> = ({task, index, dragItem, dragOverItem, handleSort}) => {
