@@ -97,14 +97,16 @@ const AddForm: FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if (editItem !== undefined && editItem !== null) {
-            if (formData.time[formData.time.length - 1] === '.') {
-                editTask(formData.title, formData.description, formData.time.slice(0, -1), formData.visible, formData.checked, editItem.id)
+            if (formData.time[0] === '.' || formData.time[formData.time.length - 1] === '.') {
+                setBlur({...blur, time: true})
+                setErrors({...errors, time: 'Введите корректное время'})
             } else {
                 editTask(formData.title, formData.description, formData.time, formData.visible, formData.checked, editItem.id)
             }
         } else {
-            if (formData.time[formData.time.length - 1] === '.') {
-                addTask(formData.title, formData.description, formData.time.slice(0, -1), formData.visible, false)
+            if (formData.time[0] === '.' || formData.time[formData.time.length - 1] === '.') {
+                setBlur({...blur, time: true})
+                setErrors({...errors, time: 'Введите корректное время'})
             } else {
                 addTask(formData.title, formData.description, formData.time, formData.visible, false)
             }
