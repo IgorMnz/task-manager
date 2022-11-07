@@ -78,7 +78,7 @@ const AddForm: FC = () => {
                 time: e.target.value
             })
         }
-        if (e.target.value === '' || e.target.value[e.target.value.length - 1] === '.') {
+        if (e.target.value === '') {
             setErrors({...errors, time: 'Введите корректное время'})
         } else {
             setErrors({...errors, time: ''})
@@ -97,9 +97,18 @@ const AddForm: FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if (editItem !== undefined && editItem !== null) {
-            editTask(formData.title, formData.description, formData.time, formData.visible, formData.checked, editItem.id)
+            if (formData.time[formData.time.length - 1] === '.') {
+                editTask(formData.title, formData.description, formData.time.slice(0, -1), formData.visible, formData.checked, editItem.id)
+            } else {
+                editTask(formData.title, formData.description, formData.time, formData.visible, formData.checked, editItem.id)
+            }
         } else {
-            addTask(formData.title, formData.description, formData.time, formData.visible, false)
+            if (formData.time[formData.time.length - 1] === '.') {
+                addTask(formData.title, formData.description, formData.time.slice(0, -1), formData.visible, false)
+            } else {
+                addTask(formData.title, formData.description, formData.time, formData.visible, false)
+            }
+
         }
     }
 
