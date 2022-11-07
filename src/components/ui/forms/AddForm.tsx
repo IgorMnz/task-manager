@@ -107,13 +107,19 @@ const AddForm: FC = () => {
     const handleBlur = (e: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLTextAreaElement>) => {
         switch (e.target.name) {
             case "title":
-                setBlur({...blur, title: true})
+                if (formData.title.length == 0) {
+                    setBlur({...blur, title: true})
+                }
                 break
             case "description":
-                setBlur({...blur, description: true})
+                if (formData.description.length == 0) {
+                    setBlur({...blur, description: true})
+                }
                 break
             case "time":
-                setBlur({...blur, time: true})
+                if (formData.time.length == 0) {
+                    setBlur({...blur, time: true})
+                }
                 break
         }
     }
