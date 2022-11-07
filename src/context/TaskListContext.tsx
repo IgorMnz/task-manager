@@ -17,6 +17,7 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
     const [term, setTerm] = useState<string>('')
     const [filter, setFilter] = useState('all')
     const [order, setOrder] = useState('DSC')
+    const [sorted, setSorted] = useState({sorted: 'time', reversed: false})
 
     const {request} = useHttp()
 
@@ -150,22 +151,33 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
         setFilter(filter)
     }
 
-    //Функция для сортировки задач по возрастанию/по убыванию
-    const sortTasks = (col: string) => {
-        if (order === "ASC") {
-            const sorted = [...tasks].sort((a: any, b: any) =>
-                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
-            )
-            setTasks(sorted)
-            setOrder("DSC")
-        }
-        if (order === "DSC") {
-            const sorted = [...tasks].sort((a: any, b: any) =>
-                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
-            )
-            setTasks(sorted)
-            setOrder("ASC")
-        }
+    //Функция для сортировки заголовка задач по возрастанию/по убыванию
+    const sortByTitle = () => {
+        setSorted({sorted: 'title', reversed: !sorted.reversed})
+        const tasksCopy = [...tasks]
+        tasksCopy.sort((titleA: any, titleB: any) => {
+            const a = titleA.title
+            const b = titleB.title
+
+            if (sorted.reversed) {
+                return b.localeCompare(a)
+            }
+            return a.localeCompare(b)
+        })
+        setTasks(tasksCopy)
+    }
+
+    //Функция для сортировки времени задач по возрастанию/по убыванию
+    const sortByTime = () => {
+        setSorted({sorted: 'time', reversed: !sorted.reversed})
+        const tasksCopy = [...tasks]
+        tasksCopy.sort((timeA: any, timeB: any) => {
+            if (sorted.reversed) {
+                return timeA.time - timeB.time
+            }
+            return timeB.time - timeA.time
+        })
+        setTasks(tasksCopy)
     }
 
     return (
@@ -185,8 +197,9 @@ const TaskListContextProvider: FC<Props> = ({children}) => {
             searchTask,
             filterTasks,
             handleChangeSearch,
-            sortTasks,
-            setTasks
+            setTasks,
+            sortByTime,
+            sortByTitle
         }}>
             {children}
         </TaskListContext.Provider>

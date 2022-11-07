@@ -9,20 +9,20 @@ import {TaskListContext} from "../../../context/TaskListContext";
 
 const SortBar: FC = () => {
 
-    const {sortTasks} = useContext(TaskListContext)
+    const {sortByTitle, sortByTime} = useContext(TaskListContext)
 
     const [titleOrder, setTitleOrder] = useState<boolean>(false)
     const [timeOrder, setTimeOrder] = useState<boolean>(false)
 
     // Функция, которая проверяет применена ли сортировка для поля title и устанавливает соответствующее состояние
     const sortTitle = () => {
-        sortTasks('title')
+        sortByTitle()
         setTitleOrder(!titleOrder)
     }
 
     // Функция, которая проверяет применена ли сортировка для поля time и устанавливает соответствующее состояние
     const sortTime = () => {
-        sortTasks('time')
+        sortByTime()
         setTimeOrder(!timeOrder)
     }
 
